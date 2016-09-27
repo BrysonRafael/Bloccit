@@ -18,18 +18,12 @@ end
 
 puts "#{Post.count}"
 
-Post.find_or_create_by(
-    title: 'Asparagus',
-    body: 'Makes your urine smell funny'
-  )
+asparagus_post = Post.find_or_create_by(title: "Asparagus", body:  "Asparagus makes your urine smell funny.")
 
 puts "#{Post.count}"
-
 puts "#{Comment.count}"
 
-Comment.find_or_create_by(
-    body: 'You should try eating beets sometime!'
-  )
+asparagus_comment = Comment.find_or_create_by(body:  "You should try eating beets sometime!", post: asparagus_post)
 
 puts "#{Comment.count}"
 
