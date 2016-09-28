@@ -4,16 +4,16 @@ class QuestionsController < ApplicationController
   end
 
   def new
-    @questions = Question.new
+    @question = Question.new
   end
 
   def create
-    @questions = Question.new
-    @questions.title = params[:questions][:title]
-    @questions.body = params[:questions][:body]
-    if @questions.save
+    @question = Question.new
+    @question.title = params[:question][:title]
+    @question.body = params[:question][:body]
+    if @question.save
       flash[:notice] = "Post was saved."
-      redirect_to @questions
+      redirect_to @question
     else
       flash.now[:alert] = "There was an error saving the question. Please try again."
       render :new
@@ -21,21 +21,21 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    @questions = Question.find(params[:id])
+    @question = Question.find(params[:id])
   end
 
   def edit
-    @questions = Question.find(params[:id])
+    @question = Question.find(params[:id])
   end
 
   def update
-    @questions = Question.find(params[:id])
-    @questions.title = params[:questions][:title]
-    @questions.body = params[:questions][:body]
+    @question = Question.find(params[:id])
+    @question.title = params[:question][:title]
+    @question.body = params[:question][:body]
 
-    if @questions.save
+    if @question.save
       flash[:notice] = "Question was updated."
-      redirect_to @questions
+      redirect_to @question
     else
       flash.now[:alert] = "There was an error saving the question. Please try again."
       render :edit
@@ -43,10 +43,10 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
-    @questions = Question.find(params[:id])
+    @question = Question.find(params[:id])
 
-    if @questions.destroy
-      flash[:notice] = "\"#{@questions.title}\" was deleted successfully."
+    if @question.destroy
+      flash[:notice] = "\"#{@question.title}\" was deleted successfully."
       redirect_to posts_path
     else
       flash.now[:alert] = "There was an error deleting the question."
