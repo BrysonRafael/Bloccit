@@ -12,7 +12,7 @@ class QuestionsController < ApplicationController
     @question.title = params[:question][:title]
     @question.body = params[:question][:body]
     if @question.save
-      flash[:notice] = "Post was saved."
+      flash[:notice] = "Question was saved."
       redirect_to @question
     else
       flash.now[:alert] = "There was an error saving the question. Please try again."
@@ -47,7 +47,7 @@ class QuestionsController < ApplicationController
 
     if @question.destroy
       flash[:notice] = "\"#{@question.title}\" was deleted successfully."
-      redirect_to posts_path
+      redirect_to questions_path
     else
       flash.now[:alert] = "There was an error deleting the question."
       render :show
