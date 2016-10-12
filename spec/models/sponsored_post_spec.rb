@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe SponsoredPost, type: :model do
   let(:title) { RandomData.random_sentence }
   let(:body) { RandomData.random_paragraph }
-  let(:price) { rand(9) }
+  let(:price) { 9 }
   let(:topic) { Topic.create!(name: name, description: description) }
   let(:post) { topic.posts.create!(title: title, body: body, price: price) }
 
