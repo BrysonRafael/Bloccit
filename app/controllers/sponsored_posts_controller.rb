@@ -6,6 +6,9 @@ class SponsoredPostsController < ApplicationController
   def new
     @topic = Topic.find(params[:topic_id])
     @sponsored_post = SponsoredPost.new
+    def number_field(object_name, method, options = {})
+      Tags::NumberField.new(object_name, method, self, options).render
+    end
   end
 
   def create
@@ -25,6 +28,9 @@ class SponsoredPostsController < ApplicationController
 
   def edit
     @sponsored_post = SponsoredPost.find(params[:id])
+    def number_field(object_name, method, options = {})
+      Tags::NumberField.new(object_name, method, self, options).render
+    end
   end
 
   def update

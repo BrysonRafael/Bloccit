@@ -10,8 +10,8 @@ RSpec.describe SponsoredPost, type: :model do
   it { is_expected.to belong_to(:topic) }
 
   describe "attributes" do
-    it "has title and body attributes" do
-      expect(SponsoredPost).to have_attributes(title: title, body: body, price: price)
+    it "has title, body, and price attributes" do
+      expect(SponsoredPost).to have_attributes(title: String, body: body, price: Integer)
     end
   end
 end
