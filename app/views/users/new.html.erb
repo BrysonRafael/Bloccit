@@ -31,6 +31,7 @@
       <% end %>
       <div class="form-group">
         <%= f.submit "Sign up", class: 'btn btn-success' %>
+        <%= form_for @user, :url => { :action => :confirm } do |f| %>
       </div>
     <% end %>
   </div>
