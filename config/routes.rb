@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create]
 
-  resources :users, only: [:confirm, :confirm]
+  resources :users, only: [:confirmation, :confirm]
 
   get 'about' => 'welcome#about'
 
