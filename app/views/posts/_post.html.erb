@@ -1,0 +1,14 @@
+<div class="media">
+  <div class="media-body">
+    <small>
+      <h4>
+      <%= link_to post.title, topic_post_path(@topic, post) %>
+    </h4>
+      <%= post.user.name %> posted <%= time_ago_in_words(post.created_at) %> ago
+      <% if user_is_authorized_for_post?(post) %>
+        | <%= link_to "Delete", [@topic, post], method: :delete %>
+      <% end %>
+    </small>
+    <p><%= post.body %></p>
+  </div>
+</div>
