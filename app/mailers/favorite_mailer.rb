@@ -14,12 +14,12 @@ class FavoriteMailer < ApplicationMailer
     mail(to: user.email, subject: "New comment on #{post.title}")
   end
 
-  def new_post
+  def new_post(user, post)
 
-    headers ["Message-ID"] = "You have favorited your own post and will receive updates when it is commented on."
+    headers["Message-ID"] = "You have favorited your own post and will receive updates when it is commented on."
 
     @user = user
-    @post = user.post
+    @post = post
 
     mail(to: user.email, subject: "New post favorited.")
   end

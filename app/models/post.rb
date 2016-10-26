@@ -4,7 +4,7 @@ class Post < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   has_many :votes, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  after_create :favorite_user_post(user, post)
+  after_create :favorite_user_post
 
   default_scope { order('rank DESC') }
   validates :title, length: { minimum: 5}, presence: true
@@ -32,7 +32,8 @@ class Post < ActiveRecord::Base
 
   private
 
-  def favorite_user_post(user, post)
-    favorites.where(user: current_user, post_id: post.id).first
+  def favorite_user_post
+    Favorite.create(post: self, user: self.user)
+    FavoriteMailer.new_post(self.user, self).deliver_now
   end
 end
