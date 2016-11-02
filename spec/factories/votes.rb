@@ -1,7 +1,7 @@
 FactoryGirl.define do
    factory :vote do
-     association :post, :user
-     vote = create(:vote)
-     vote.new_record?
+     user
+     post
+     value 1
    end
  end
