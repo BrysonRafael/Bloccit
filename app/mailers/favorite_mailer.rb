@@ -16,7 +16,7 @@ class FavoriteMailer < ApplicationMailer
 
   def new_post
 
-    headers ["Message-ID"] = "You have favorited your own post and will receive updates when it is commented on."
+    headers["Message-ID"] = "You have favorited your own post and will receive updates when it is commented on."
 
     @user = user
     @post = user.post
